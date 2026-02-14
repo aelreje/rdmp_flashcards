@@ -7,17 +7,33 @@ const flashcardsData = [
     id: 1,
     question: '',
     answer: '',
+    explanation: '',
   },
   {
     id: 2,
     question: '',
     answer: '',
+    explanation: '',
   },
   {
     id: 3,
     question: '',
     answer: '',
+    explanation: '',
+  },
+  {
+    id: 4,
+    question: '',
+    answer: '',
+    explanation: '',
+  },
+  {
+    id: 5,
+    question: '',
+    answer: '',
+    explanation: '',
   }
+  
 ]
 
 
@@ -27,6 +43,19 @@ function App() {
   
   return (
     <>
+      <div className="card">
+        <div className="progress-bar">
+
+        </div>
+
+        {/* ending note: girl u r still thinking of coding in html, use the "Atoms" & other available components next time !! */}
+
+
+      </div>
+      <div className="navigation-buttons">
+
+      </div>
+      
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

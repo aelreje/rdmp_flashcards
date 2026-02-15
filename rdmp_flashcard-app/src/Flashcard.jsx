@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function Flashcard(props) {
-    const [isFlipped, setisFlipped] = useState(false)
+    const [isFlipped, setIsFlipped] = useState(false)
 
     const handleClick = () => {
         setIsFlipped(!isFlipped)
@@ -12,7 +12,7 @@ function Flashcard(props) {
             className="card"
             onClick={handleClick}
             style={{
-                backgroundColor: isFlipped ? '#2ecc271' : '#fff',
+                backgroundColor: isFlipped ? '#2ecc71' : '#fff',
                 color: isFlipped ? '#fff' : '#000'
             }}
         >

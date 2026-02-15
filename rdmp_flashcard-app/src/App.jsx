@@ -47,12 +47,13 @@ function App() {
     <>
       <div className="app-containter">
         <h1>React Flashcards</h1>
-      </div>
 
       <Flashcard
         question={flashcardsData[0].question}
         answer={flashcardsData[0].answer}
       />
+
+      </div>
     </>
   )
 }

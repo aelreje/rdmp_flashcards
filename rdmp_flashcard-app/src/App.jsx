@@ -74,8 +74,6 @@ function App() {
               question={currentCard.question}
               answer={currentCard.answer}
               explanation={currentCard.explanation}
-              count={currentIndex}
-              total={totalCards}
             />
           )}
         </main>

@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-
+import ProgressBar from './ProgressBar'
+import CardNavigation from './CardNavigation'
 import Flashcard from './Flashcard'
-
-
 
 const flashcardsData = [
   {
@@ -38,23 +37,59 @@ const flashcardsData = [
   }
 ]
 
-
-
-
 function App() {
-  
+  const [currentIndex, setCurrentIndex] = useState(0); // 0 = Welcome Screen, 1...N = Cards
+  const totalCards = flashcardsData.length;
+
+  const handleNext = () => {
+    if (currentIndex < totalCards) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const currentCard = currentIndex > 0 ? flashcardsData[currentIndex - 1] : null;
+
   return (
-    <>
-      <div className="app-containter">
-        <h1>React Flashcards</h1>
+    <div className="app-container">
+      <div className="card-wrapper">
+        <header className="card-header">
+           <ProgressBar current={currentIndex} total={totalCards} />
+        </header>
 
-      <Flashcard
-        question={flashcardsData[0].question}
-        answer={flashcardsData[0].answer}
-      />
+        <main className="card-content">
+          {currentIndex === 0 ? (
+            <div className="welcome-card">
+              <h1>Hi!</h1>
+              <p>To start reviewing the flashcards, click the next button.</p>
+            </div>
+          ) : (
+            <Flashcard 
+              key={currentCard.id} // Forces re-render to reset flip state on new card
+              question={currentCard.question}
+              answer={currentCard.answer}
+              explanation={currentCard.explanation}
+              count={currentIndex}
+              total={totalCards}
+            />
+          )}
+        </main>
 
+        <footer className="card-footer">
+          <CardNavigation 
+            onNext={handleNext} 
+            onPrev={handlePrev} 
+            isFirst={currentIndex === 0}
+            isLast={currentIndex === totalCards}
+          />
+        </footer>
       </div>
-    </>
+    </div>
   )
 }
 

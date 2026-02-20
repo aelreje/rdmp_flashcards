@@ -1,8 +1,12 @@
 import './App.css';
 
 export default function ProgressBar({ current, total }) {
-  const percentage = (current / total) * 100;
+  let percentage = 0;
 
+  if (total > 0) {
+    const rawPercentage = (current / total) * 100;
+    percentage = Math.min(100, Math.max(0, rawPercentage));
+  }
   return (
     <div className="progress-bar-container">
       <div className="progress-track">
